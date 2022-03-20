@@ -30,7 +30,7 @@ setTimeout(processVideo, 0);
 
 */
 
-var video = document.getElementById("videoElement");
+let video = document.getElementById("videoElement");
 
 function start() {
   navigator.mediaDevices.getUserMedia({ video: true })
@@ -41,24 +41,30 @@ function start() {
       console.log("Something went wrong!");
     });
 
-    let canvasFrame = document.getElementById("canvasInput"); // canvasFrame is the id of <canvas>
-let context = canvasFrame.getContext("2d");
+    
+}
+
 let src = new cv.Mat(height, width, cv.CV_8UC4);
 let dst = new cv.Mat(height, width, cv.CV_8UC1);
+let cap = new cv.VideoCapture(videoSource);
 const FPS = 30;
 function processVideo() {
     let begin = Date.now();
-    context.drawImage(video, 0, 0, width, height);
-    src.data.set(context.getImageData(0, 0, width, height).data);
+    cap.read(src);
     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
-    cv.imshow("canvasOutput", dst); // canvasOutput is the id of another <canvas>;
+    cv.imshow("canvasOutput", dst);
     // schedule next one.
     let delay = 1000/FPS - (Date.now() - begin);
     setTimeout(processVideo, delay);
 }
 // schedule first one.
 setTimeout(processVideo, 0);
-}
+
+
+
+    
+
+
 
 function stop() {
     var stream = video.srcObject;
@@ -74,3 +80,11 @@ function stop() {
 
 
 
+  videoElement.onload = function() {
+    let mat = cv.videoread(videoElement);
+    cv.imshow('canvasOutput', mat);
+    mat.delete();
+  };
+  function onOpenCvReady() {
+    document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+  }
