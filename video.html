@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="video.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,8 +12,10 @@
     <p id="status">OpenCV.js is loading...</p>
     <div class="main">
       <div class="inputoutput">
-        <img id="imageSrc" alt="No Image" />
-        <div class="caption">imageSrc <input type="file" id="fileInput" name="file" /></div>
+        <video autoplay="true" id="videoElement" width="300" height="500"></video>
+        
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
       </div>
       <div class="inputoutput">
         <canvas id="canvasOutput" ></canvas>
@@ -22,9 +24,8 @@
     </div>
     </body>
     
-    <script src="index.js"></script>
+    <script src="video.js"></script>
 <script async src="https://docs.opencv.org/3.4.0/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 
 </body>
 </html>
-

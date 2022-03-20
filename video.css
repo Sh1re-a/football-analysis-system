@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.inputoutput{
+    margin: 5px;
+    border: 1px black solid;
+    height: 300px;
+    width: 500px;
+  }
+#videoElement{
+    width: 500px;
+	height: 300px;
+	background-color: #666;
+    border: black 2px solid;
+}
+
+#imageSrc{
+    height: 300px;
+    width: 500px;
+}
+
+#canvasOutput{
+    height: 300px;
+    width: 500px;
+}
+button{
+    justify-content: flex-end;
+}
