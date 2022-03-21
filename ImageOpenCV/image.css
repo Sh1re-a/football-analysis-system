@@ -6,6 +6,8 @@
 
 .inputoutput{
   margin: 5px;
+  height: 300px;
+  width: 500px;
   border: 1px black solid;
 }
 
